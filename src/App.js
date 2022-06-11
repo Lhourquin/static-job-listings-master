@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import jobsData from "./data.json";
+import styled from "styled-components";
+import bgMobile from "./img/bg-header-mobile.svg";
+import JobCard from "./components/job-card/index";
 
+const Header = styled.header`
+    background-image : url(${bgMobile}); 
+    height: 156px;
+
+`;
 function App() {
+
+  console.log(jobsData)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <JobCard jobsData={jobsData}/>
     </div>
   );
 }
