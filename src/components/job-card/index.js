@@ -47,7 +47,7 @@ const Card = styled.div`
     hr{
         margin-left: 20px;
         width : 275px;
-        color : black;
+        color : hsl(180, 8%, 52%);
         border : 1px solid;
     }
 
