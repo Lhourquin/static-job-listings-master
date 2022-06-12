@@ -9,27 +9,26 @@ const ContainerJobCard = styled.div`
 const Card = styled.div`
     background-color: white;
     width : 330px;
-    border-left : 8px solid   hsl(180, 29%, 50%);
+    border-left : 8px solid hsl(180, 29%, 50%);
     border-radius : 9px;
-    display : flex;
-    flex-direction : column;
     border-top-left-radius: 9px 10px;
     border-bottom-left-radius: 9px 10px;
     margin : 70px auto 55px auto;
     -webkit-box-shadow: 5px 7px 27px 5px rgba(0,0,0,0.11); 
     box-shadow: 5px 7px 27px 5px rgba(0,0,0,0.11);
-    img{
+    .logo{
         width: 60px;
-        padding-left : 20px;
+        margin-left : -220px;
         margin-top : -30px;
+        text-align: left;
     }
-    h4{
+    .company{
         color : hsl(180, 29%, 50%);
         padding-left : 20px;
         text-align : left;
         
     }
-    h5{
+    .position{
         text-align: left;
         padding-left : 20px;
     }
@@ -38,11 +37,14 @@ const Card = styled.div`
         padding-left : 20px;
         list-style-type : none;
         color : hsl(180, 8%, 52%);
+        li{
+            font-weight : 600;
+        }
         li:nth-child(2), li:nth-child(3){
             padding-left :10px;
         }
     }
-    tr{
+    hr{
         margin-left: 20px;
         width : 275px;
         color : black;
@@ -72,6 +74,8 @@ const FilterLanguagesAndLevel = styled.ul`
         height : 22px;
         display : flex;
         padding : 6px;
+        cursor : pointer;
+
     }
 `;
 const JobCard = ({ jobsData }) => {
@@ -81,15 +85,15 @@ const JobCard = ({ jobsData }) => {
                 {
                     jobsData.map(obj =>
                         <Card key={obj.id}>
-                            <img src={obj.logo} alt={obj.company + " logo"} />
-                            <h4>{obj.company} {obj.new === true ? <Recent marginLeft={"20px"} bgColor={"hsl(180, 29%, 50%)"}>NEW!</Recent> : ""} {obj.featured === true ? <Recent marginLeft={"5px"} bgColor={"hsl(180, 14%, 20%)"}>FEATURED</Recent>: ""}</h4>
-                            <h5>{obj.position}</h5>
+                            <img className="logo" src={obj.logo} alt={obj.company + " logo"} />
+                            <h4 className="company">{obj.company} {obj.new === true ? <Recent marginLeft={"20px"} bgColor={"hsl(180, 29%, 50%)"}>NEW!</Recent> : ""} {obj.featured === true ? <Recent marginLeft={"5px"} bgColor={"hsl(180, 14%, 20%)"}>FEATURED</Recent>: ""}</h4>
+                            <h5 className="position">{obj.position}</h5>
                             <ul className="postedContactLocation">
                                 <li>{obj.postedAt}</li>
                                 <li>• {obj.contract}</li>
                                 <li>• {obj.location}</li>
                             </ul>
-                            <tr/>
+                            <hr/>
                             <FilterLanguagesAndLevel>
                                 <li>{obj.role}</li>
                                 <li>{obj.level}</li>
