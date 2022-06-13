@@ -5,6 +5,7 @@ import styled from "styled-components";
 import bgMobile from "./img/bg-header-mobile.svg";
 import bgDesktop from "./img/bg-header-desktop.svg";
 import JobCard from "./components/job-card/index";
+import FilterBar from './components/filter-bar/index';
 
 const Header = styled.header`
     background-image : url(${bgMobile}); 
@@ -17,6 +18,7 @@ const Header = styled.header`
     }
 
 `;
+
 function App() {
 
   console.log(jobsData)
@@ -24,6 +26,7 @@ function App() {
   return (
     <div className="App">
       <Header/>
+      <FilterBar/>
       <JobCard jobsData={jobsData}/>
     </div>
   );
