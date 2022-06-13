@@ -1,26 +1,26 @@
 import React from "react";
 import styled from "styled-components";
 import remove from "./../../img/icon-remove.svg";
+
 const FilterContainer = styled.ul`
     display : flex;
     flex-wrap : wrap;
     list-style-type : none;
     padding-left : 20px;
     padding-top : 15px;
-
- 
-
+    margin-top : 0;
     @media (min-width : 600px){
         display : flex;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
+        /* text-align: left; */
         margin: 50px 0 auto auto;
-        justify-content : center;
-        overflow : auto;
+        justify-content : start;
+        /* overflow : auto; */
         li{
             padding :15px;
             display : flex;
             justify-content: center;
-          
+            
         }
     }
 `;
@@ -39,7 +39,6 @@ const FilterSelect = styled.li`
     padding : 6px;
     cursor : pointer;
 
-
 `;
 
 const ButtonDeleteFilter = styled.button`
@@ -56,28 +55,25 @@ const ButtonDeleteFilter = styled.button`
     width: 30px;
     cursor: pointer;
     margin-right: -5px;
-
+    @media (min-width : 600px){
+        margin-top: -15px;
+        margin-right: -15px;
+        height: 52px;
+        width : 40px;
+    }
 `;
+
+
 
 const Filter = () => {
     return (
         <>
             <FilterContainer>
-                <FilterSelect>jqdsfjkgq<ButtonDeleteFilter/></FilterSelect>
+                <FilterSelect>HTML<ButtonDeleteFilter /></FilterSelect>
 
-                <FilterSelect>Tessdfgt<ButtonDeleteFilter /></FilterSelect>
+               
 
-                <FilterSelect>Tesdsfgdsfggt<ButtonDeleteFilter /></FilterSelect>
-                <FilterSelect>Tdfsgest<ButtonDeleteFilter /></FilterSelect>
-                <FilterSelect>dsqfghdsfh<ButtonDeleteFilter /></FilterSelect>
-
-                <FilterSelect>Test<ButtonDeleteFilter /></FilterSelect> <FilterSelect>Test<ButtonDeleteFilter /></FilterSelect>
-                <FilterSelect>Test<ButtonDeleteFilter /></FilterSelect>
-
-                <FilterSelect>Test<ButtonDeleteFilter /></FilterSelect> <FilterSelect>Test<ButtonDeleteFilter /></FilterSelect>
-                <FilterSelect>Test<ButtonDeleteFilter /></FilterSelect>
-
-                </FilterContainer>
+            </FilterContainer>
         </>
     )
 }

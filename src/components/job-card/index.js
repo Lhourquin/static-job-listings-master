@@ -26,7 +26,8 @@ const Card = styled.div`
         color : hsl(180, 29%, 50%);
         padding-left : 20px;
         text-align : left;
-        
+        display: flex;
+        align-items: center;
     }
     .position{
         text-align: left;
@@ -102,7 +103,7 @@ const Recent = styled.span`
     margin-left : ${props => props.marginLeft ? props.marginLeft : ""};        
     color : white;
     border-radius : 20px;
-    padding : 6px;
+    padding : 5px;
     @media (min-width : 600px){
         padding : 5px;
         margin-top : -4px;
@@ -149,7 +150,7 @@ const JobCard = ({ jobsData }) => {
                         <Card key={obj.id} borderColor={obj.featured === true ? "8px solid hsl(180, 29%, 50%)" : ""} borderRadiusLeft={obj.featured === true ? "9px 10px" : ""}>
                             <img className="logo" src={obj.logo} alt={obj.company + " logo"} />
                             <div className="container__company-position-postedContractLocation">
-                                <h4 className="company">{obj.company} {obj.new === true ? <Recent marginLeft={"20px"} bgColor={"hsl(180, 29%, 50%)"}>NEW!</Recent> : ""} {obj.featured === true ? <Recent marginLeft={"5px"} bgColor={"hsl(180, 14%, 20%)"}>FEATURED</Recent> : ""}</h4>
+                                <h4 className="company">{obj.company} {obj.new === true ? <Recent marginLeft={"15px"} bgColor={"hsl(180, 29%, 50%)"}>NEW!</Recent> : ""} {obj.featured === true ? <Recent marginLeft={"8px"} bgColor={"hsl(180, 14%, 20%)"}>FEATURED</Recent> : ""}</h4>
                                 <h5 className="position">{obj.position}</h5>
                                 <ul className="postedContractLocation">
                                     <li>{obj.postedAt}</li>
