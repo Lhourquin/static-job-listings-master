@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import remove from "./../../img/icon-remove.svg";
+import remove from "./../../../img/icon-remove.svg";
 
 const FilterContainer = styled.ul`
     width : 90%;
@@ -68,17 +68,15 @@ const ButtonDeleteFilter = styled.button`
 
 
 
-const Filter = () => {
+const Filter = ({filterSelected, removeFilter}) => {
     return (
         <>
-            <FilterContainer>
-                <FilterSelect>HTML<ButtonDeleteFilter /></FilterSelect>
-                {/* <FilterSelect>CSS<ButtonDeleteFilter /></FilterSelect>
-                <FilterSelect>JS<ButtonDeleteFilter /></FilterSelect>
-                <FilterSelect>JUNIOR<ButtonDeleteFilter /></FilterSelect>
-                
-                */}
-
+            <FilterContainer onClick={(e)=>removeFilter(e)}>
+                {
+                    filterSelected.map((filter, id)=> {
+                      return  <FilterSelect key={id}>{filter}<ButtonDeleteFilter /></FilterSelect>
+                    })
+                }
             </FilterContainer>
         </>
     )

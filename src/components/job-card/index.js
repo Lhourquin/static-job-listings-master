@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+
 const ContainerJobCard = styled.div`
 // @media (max-width : 600px){
 //     margin-top: 100px;
@@ -141,7 +142,10 @@ const FilterLanguagesAndLevel = styled.ul`
         }
     }
 `;
-const JobCard = ({ jobsData }) => {
+
+
+const JobCard = ({ jobsData, getFilterSelected }) => {
+
     return (
         <>
             <ContainerJobCard>
@@ -159,9 +163,9 @@ const JobCard = ({ jobsData }) => {
                                 </ul>
                             </div>
                             <hr />
-                            <FilterLanguagesAndLevel>
-                                <li>{obj.role}</li>
-                                <li>{obj.level}</li>
+                            <FilterLanguagesAndLevel onClick={(e)=>  getFilterSelected(e)}>
+                                <li >{obj.role}</li>
+                                <li> {obj.level}</li>
 
                                 {
                                     obj.languages.map((langage, id) => <li key={id}>
