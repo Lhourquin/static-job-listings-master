@@ -3,19 +3,18 @@ import styled from "styled-components";
 import remove from "./../../img/icon-remove.svg";
 
 const FilterContainer = styled.ul`
+    width : 90%;
     display : flex;
     flex-wrap : wrap;
     list-style-type : none;
     padding-left : 20px;
     padding-top : 15px;
     margin-top : 0;
+    margin-bottom: 0;
     @media (min-width : 600px){
         display : flex;
         flex-wrap: wrap;
-        /* text-align: left; */
-        margin: 50px 0 auto auto;
         justify-content : start;
-        /* overflow : auto; */
         li{
             padding :15px;
             display : flex;
@@ -38,6 +37,10 @@ const FilterSelect = styled.li`
     display : flex;
     padding : 6px;
     cursor : pointer;
+    @media (min-width : 600px){
+        height: 6px;
+        align-items: center;
+    }
 
 `;
 
@@ -56,9 +59,9 @@ const ButtonDeleteFilter = styled.button`
     cursor: pointer;
     margin-right: -5px;
     @media (min-width : 600px){
-        margin-top: -15px;
+        margin-top: -1px;
         margin-right: -15px;
-        height: 52px;
+        height: 35px;
         width : 40px;
     }
 `;
@@ -70,8 +73,11 @@ const Filter = () => {
         <>
             <FilterContainer>
                 <FilterSelect>HTML<ButtonDeleteFilter /></FilterSelect>
-
-               
+                {/* <FilterSelect>CSS<ButtonDeleteFilter /></FilterSelect>
+                <FilterSelect>JS<ButtonDeleteFilter /></FilterSelect>
+                <FilterSelect>JUNIOR<ButtonDeleteFilter /></FilterSelect>
+                
+                */}
 
             </FilterContainer>
         </>

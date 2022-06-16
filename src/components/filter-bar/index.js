@@ -4,7 +4,6 @@ import Filter from "../filter/index";
 
 const Bar = styled.div`
     display: flex;
-    /* justify-content: space-; */
     margin: -50px auto auto auto;
     width : 330px;
     background: white;
@@ -12,7 +11,7 @@ const Bar = styled.div`
     box-shadow: 5px 7px 27px 5px rgba(0,0,0,0.11);
     border-radius : 9px;
     @media (min-width : 600px){
-        margin: -90px auto auto auto;
+         margin: -35px auto auto auto; 
         width : 70%;
     }
 `;
@@ -25,7 +24,11 @@ const ClearButton = styled.button`
     font-weight: 700;
     color :  hsl(180,29%,50%);
     cursor : pointer;
-    
+    padding-top: 10px;
+    @media (min-width :600px){
+        padding-top: 20px;
+
+    }
 `;
 const FilterBar = () => {
     return (
