@@ -164,7 +164,7 @@ const JobCard = ({ jobsData, getFilterSelected }) => {
                             </div>
                             <hr />
                             <FilterLanguagesAndLevel onClick={(e)=>  getFilterSelected(e)}>
-                                <li >{obj.role}</li>
+                                <li>{obj.role}</li>
                                 <li> {obj.level}</li>
 
                                 {

@@ -25,35 +25,25 @@ function App() {
   const [filterSelected, setFilterSelected] = useState([]);
 
   const getFilterSelected = (event) => {
-    if (event.target.tagName == "LI" && filterSelected.includes(event.target.innerHTML.trim()) != true) {
+    if (event.target.tagName === "LI" && filterSelected.includes(event.target.innerHTML.trim()) !== true) {
       setFilterSelected([...filterSelected, event.target.innerHTML.trim()]);
     }
   }
   const removeFilter = (event) => {
-    if (event.target.tagName == "BUTTON") {
-      setFilterSelected(filterSelected.filter(index => index != event.target.parentNode.innerText));
+    if (event.target.tagName === "BUTTON") {
+      setFilterSelected(filterSelected.filter(index => index !== event.target.parentNode.innerText));
     }
   }
   const removeAllFilter = () => {
     setFilterSelected([]);
   }
-  const getOnlyJobsCardSelected = () => {
-    let result = jobsDataJSON.filter((x) => {
-      let checker = (arr, target) => target.every(v => arr.includes(v));
-      return checker(x.languages, filterSelected);
-    })
-    return result;
-
-  }
 
   useEffect(() => {
-    if (filterSelected.length > 0) {
-      setJobsData(() => getOnlyJobsCardSelected());
-      console.log(jobsData)
-    } else {
-      setJobsData(jobsDataJSON)
-
-    }
+    setJobsData(jobsDataJSON.filter((x) => {
+      let checkEvery = (arr, target) => target.every(v => arr.includes(v));
+      let checkEveryFilter = checkEvery([...x.tools, ...x.languages, x.level, x.role], filterSelected);
+      return checkEveryFilter;
+    }));
   }, [filterSelected])
 
   return (
