@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import jobsDataJSON from "./data.json";
 import styled from "styled-components";
@@ -25,7 +25,7 @@ function App() {
   const [filterSelected, setFilterSelected] = useState([]);
 
   const getFilterSelected = (event) => {
-    if(event.target.tagName == "LI" && filterSelected.includes(event.target.innerHTML) != true){
+    if(event.target.tagName == "LI" && filterSelected.includes(event.target.innerHTML.trim()) != true){
       setFilterSelected([...filterSelected, event.target.innerHTML.trim()]);
     }
   }
@@ -34,11 +34,32 @@ function App() {
       setFilterSelected(filterSelected.filter(index => index != event.target.parentNode.innerText));
     }
   }
-  const removeAllFilter = (event)=> {
+  const removeAllFilter = ()=> {
     setFilterSelected([]);
   }
+  const getOnlyJobsCardSelected = ()=> {
+    if(filterSelected.length > 0){
+      let result = jobsData.filter((x) => {
+      for(let i = 0; i < filterSelected.length; i++){
+        if(x.languages.includes(filterSelected[i])){
+          return jobsData;
+        }
+      }
+    })
+    setJobsData(result)
+    }else{
+      setJobsData(jobsDataJSON)
+    }
+
+  }
+
+  useEffect(()=> {
+    if(filterSelected){
+      getOnlyJobsCardSelected();
+    }
+
+  }, [filterSelected])
   
-  console.log(filterSelected)
   return (
     <div className="App">
       <Header/>
