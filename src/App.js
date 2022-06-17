@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import jobsDataJSON from "./data.json";
 import styled from "styled-components";
@@ -25,49 +25,45 @@ function App() {
   const [filterSelected, setFilterSelected] = useState([]);
 
   const getFilterSelected = (event) => {
-    if(event.target.tagName == "LI" && filterSelected.includes(event.target.innerHTML.trim()) != true){
+    if (event.target.tagName == "LI" && filterSelected.includes(event.target.innerHTML.trim()) != true) {
       setFilterSelected([...filterSelected, event.target.innerHTML.trim()]);
     }
   }
-  const removeFilter = (event)=> {
-    if(event.target.tagName == "BUTTON"){
+  const removeFilter = (event) => {
+    if (event.target.tagName == "BUTTON") {
       setFilterSelected(filterSelected.filter(index => index != event.target.parentNode.innerText));
     }
   }
-  const removeAllFilter = ()=> {
+  const removeAllFilter = () => {
     setFilterSelected([]);
   }
-  const getOnlyJobsCardSelected = ()=> {
-    if(filterSelected.length > 0){
-      let result = jobsData.filter((x) => {
-      for(let i = 0; i < filterSelected.length; i++){
-        if(x.languages.includes(filterSelected[i])){
-          return jobsData;
-        }
-      }
+  const getOnlyJobsCardSelected = () => {
+    let result = jobsDataJSON.filter((x) => {
+      let checker = (arr, target) => target.every(v => arr.includes(v));
+      return checker(x.languages, filterSelected);
     })
-    setJobsData(result)
-    }else{
-      setJobsData(jobsDataJSON)
-    }
+    return result;
 
   }
 
-  useEffect(()=> {
-    if(filterSelected){
-      getOnlyJobsCardSelected();
-    }
+  useEffect(() => {
+    if (filterSelected.length > 0) {
+      setJobsData(() => getOnlyJobsCardSelected());
+      console.log(jobsData)
+    } else {
+      setJobsData(jobsDataJSON)
 
+    }
   }, [filterSelected])
-  
+
   return (
     <div className="App">
-      <Header/>
+      <Header />
       {
-       filterSelected.length > 0 && <FilterBar filterSelected={filterSelected} 
-                                               removeFilter={removeFilter}
-                                               removeAllFilter={removeAllFilter}/>
-        }
+        filterSelected.length > 0 && <FilterBar filterSelected={filterSelected}
+          removeFilter={removeFilter}
+          removeAllFilter={removeAllFilter} />
+      }
       <JobCard jobsData={jobsData} getFilterSelected={getFilterSelected} />
     </div>
   );
